@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Fullscreen Overlay Responsive Navigation Menu Using GSAP</title>
+		<link rel="stylesheet" type="text/css" href="styles.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+	</head>
+
+	<body>
+		<div class="menu-open">menu</div>
+		<div class="nav-container">
+			<div class="menu-close">close</div>
+			<div class="socials">
+				<span>facebook</span>
+				<span>instagram</span>
+			</div>
+			<nav class="menu">
+				<div class="menu__item">
+					<a class="menu__item-link">Home</a>
+					<img class="menu__item-img" src="menu-img-one.jpg" />
+					<div class="marquee">
+						<div class="marquee__inner">
+							<span>Home - Home - Home - Home - Home - Home - Home</span>
+						</div>
+					</div>
+				</div>
+				<div class="menu__item">
+					<a class="menu__item-link">Showcase</a>
+					<img class="menu__item-img" src="menu-img-two.jpg" />
+					<div class="marquee">
+						<div class="marquee__inner">
+							<span
+								>Showcase - Showcase - Showcase - Showcase - Showcase - Showcase
+								- Showcase</span
+							>
+						</div>
+					</div>
+				</div>
+				<div class="menu__item">
+					<a class="menu__item-link">About</a>
+					<img class="menu__item-img" src="menu-img-three.jpg" />
+					<div class="marquee">
+						<div class="marquee__inner">
+							<span>About - About - About - About - About - About - About</span>
+						</div>
+					</div>
+				</div>
+				<div class="menu__item">
+					<a class="menu__item-link">Contact</a>
+					<img class="menu__item-img" src="menu-img-four.jpg" />
+					<div class="marquee">
+						<div class="marquee__inner">
+							<span
+								>Contact - Contact - Contact - Contact - Contact - Contact -
+								Contact</span
+							>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<script>
+			var t1 = new TimelineMax({ paused: true });
+
+			t1.to(".nav-container", 1, {
+				left: 0,
+				ease: Expo.easeInOut,
+			});
+
+			t1.staggerFrom(
+				".menu > div",
+				0.8,
+				{ y: 100, opacity: 0, ease: Expo.easeOut },
+				"0.1",
+				"-=0.4"
+			);
+
+			t1.staggerFrom(
+				".socials",
+				0.8,
+				{ y: 100, opacity: 0, ease: Expo.easeOut },
+				"0.4",
+				"-=0.6"
+			);
+
+			t1.reverse();
+			$(document).on("click", ".menu-open", function () {
+				t1.reversed(!t1.reversed());
+			});
+			$(document).on("click", ".menu-close", function () {
+				t1.reversed(!t1.reversed());
+			});
+		</script>
+	</body>
+</html>
